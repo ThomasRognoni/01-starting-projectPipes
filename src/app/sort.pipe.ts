@@ -3,6 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'sort',
   standalone: true,
+  pure: false, // the method will be called on every change detection cycle, otherwise it would not work when the array is mutated
 })
 export class SortPipe implements PipeTransform {
   transform(value: string[] | number[], direction: 'asc' | 'desc' = 'asc') {
